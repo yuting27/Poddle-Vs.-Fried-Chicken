@@ -1,4 +1,4 @@
-# Poddle Dogs Vs. Fried Chicken Wings
+# Poddle Dogs Vs. Fried Chicken
 
 ![Alt text](./fig/lab_fried_chicken.png)
 
@@ -6,13 +6,13 @@ Figure credit: Twitter @teenybiscuit
 
 ## Data Generation
 
-We randomly collected 500 images with search word "**brown poddle dogs**"" and 500 images with search word "**fried chichen wings**" from Google Image Search. We downloaded the top-rank search results and filtered out the unqualified ones, such as wrong subjects, images that are too small or too large, black-and-white images. We then converted all images to .jpg format. The raw images can be found in the [./data/images/](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/tree/master/data/images) folder.
+Using [Google image search](https://images.google.com/), we harvested 500 images via search phrase "**brown poddle dogs**"" and 500 images via search phrase "**fried chichen wings**" respectively. More specifically, we scraped top-ranked search results and manually removed inappropriate images for this experiment (e.g., wrong subjects, images that are too small or too large, black-and-white images). All images are then converted to the [JPEG format](https://en.wikipedia.org/wiki/JPEG). The raw images can be found in the [./data/images/](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/tree/master/data/images) folder.
 
 ## Data Processing
 
-We randomly split the entire set of images into 70% training images and 30% images. The testing image ID is given in ... Since the images of difference sizes and the objects in these images have different compositions, backgroungs, lighting conditions and etc., we use the SIFT (Scaled Invairant Feature Transformation) as input feature vectors. In this image set, we use a vocabulary of size 5000. The extraction of SIFT features is implemented by [Vlfeat](http://www.vlfeat.org/) in MATLAB by adapting [this code](http://www.vlfeat.org/applications/caltech-101-code.html). Our SIFT extraction code is located [here](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/blob/master/lib/extract_sift_poddleVsChicken.m). The output feature matrix for both training and testing images is saved as a sparse matrix format in the [CSV file](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/blob/master/data/sift_feature_pf.csv) to reduce storage cost. We also provide a [.RData file](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/blob/master/data/sift_feature_pf.RData) of the feature matrix with both sparse input matrix and class label. 
+We randomly split the entire set of images into training images (70%) and testing images (30%). The testing image ID is given in ... Since the images are of difference sizes and the objects in these images have different compositions, with different backgroungs andlighting conditions and etc., we use the [SIFT (Scaled Invairant Feature Transformation)](https://en.wikipedia.org/wiki/Scale-invariant_feature_transform) as input feature vectors. For this image set, we use a vocabulary of size 5000. The extraction of SIFT features is implemented by [Vlfeat](http://www.vlfeat.org/) in MATLAB by adapting [this code](http://www.vlfeat.org/applications/caltech-101-code.html). Our SIFT extraction code can be located [here](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/blob/master/lib/extract_sift_poddleVsChicken.m). The output feature matrix for both training and testing images is saved in a sparse matrix format as a [CSV file](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/blob/master/data/sift_feature_pf.csv) to reduce storage cost. We also provide a [.RData file](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/blob/master/data/sift_feature_pf.RData) of the feature matrix with both sparse input matrix and class label. 
 
-The image processing is illustrated in the following figure:
+The image processing is summarized in the following diagram:
 
 ![Alt text](./fig/sift_image_processing.png)
 
