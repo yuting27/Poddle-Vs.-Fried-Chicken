@@ -10,10 +10,36 @@ We randomly collected 500 images with search word "**brown poddle dogs**"" and 5
 
 ## Data Processing
 
-We randomly split the entire set of images into 70% training images and 30% images. The testing image ID is given in ... Since the images of difference sizes and the objects in these images have different compositions, backgroungs, lighting conditions and etc., we use the SIFT (Scaled Invairant Feature Transformation) as input feature vectors. In this image set, we use a vocabulary of size 5000. The extraction of SIFT features is implemented by [Vlfeat in](http://www.vlfeat.org/) MATLAB by adapting [this codes](http://www.vlfeat.org/applications/caltech-101-code.html). Our SIFT extraction code is located [here](). The output feature matrix for both training and testing images is saved as a sparse matrix format in the [CSV file](./data/sift_feature_pf.csv) to reduce storage cost. 
+We randomly split the entire set of images into 70% training images and 30% images. The testing image ID is given in ... Since the images of difference sizes and the objects in these images have different compositions, backgroungs, lighting conditions and etc., we use the SIFT (Scaled Invairant Feature Transformation) as input feature vectors. In this image set, we use a vocabulary of size 5000. The extraction of SIFT features is implemented by [Vlfeat](http://www.vlfeat.org/) in MATLAB by adapting [this codes](http://www.vlfeat.org/applications/caltech-101-code.html). Our SIFT extraction code is located [here](./lib/sift_pf.m). The output feature matrix for both training and testing images is saved as a sparse matrix format in the [CSV file](./data/sift_feature_pf.csv) to reduce storage cost. We also provide a [.RData file](sift_feature_pf.RData) of the feature matrix with both sparse input matrix and class label. 
+
+The image processing is illustrated in the following figure:
+
+![Alt text](./fig/sift_image_processing.png)
+
 
 ## Feature Visualization
 
+To visualize a certain extracted feature, we first need to retrieve key points in training images that falls into the cluster of selected codes. The cluster assignments of detected keypoints are saved in the [assigment data](./data/sift_feature_assign.csv) with the numbers represent the cluster indices that is consistent with the column index of the feature matrix. The visualization also needs the information of the frames and the orientation of the maximum gradient of the relevant keypoints, which is also provided in the [frame information data](./data/sift_frame_pf.csv). We use R to visualize the keyoints patches that represent a particular "visual word". The code can be found [here](./lib/)
 
 
- 
+To perform the visualization, you will need the following auxillary files:
+
+ * Frames of detected keypoints: [./output/frames.csv](./output/frames.csv)
+ * Image index associated with each detected keypoint(since there are different numbers of keypoints detected from images): [./output/img_indices.csv](./output/img_indices.csv)
+ * The cluster assignemtn of detected keypoints: [./output/sift_feature_assign.csv](./output/sift_feature_assign.csv)
+
+An example visualization of one feature:
+![Alt text](./fig/varFeature_803.jpg)
+
+## Folder Organziation
+
+ * ./data/: 
+ 	+ the original raw images
+ 	+ the extracted SIFT feature (sparse) matrix (in both .csv and .RData)
+ 	+ training image names
+ * ./lib/ :
+ 	+ SIFT feature extraction code in Matlab
+ 	+ SIFT feature visualization code in R
+ * ./output/:
+ 	+ auxillary .mat files for SIFT feature extraction
+ 	+ keypoints information for visualization in .csv files
