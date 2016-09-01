@@ -1,4 +1,4 @@
-# Poddle Dogs Vs. Fried Chicken
+# Poodle Dogs Vs. Fried Chicken
 
 ![Alt text](./fig/lab_fried_chicken.png)
 
@@ -6,7 +6,7 @@ Figure credit: Twitter @teenybiscuit
 
 ## Data Generation
 
-Using [Google image search](https://images.google.com/), we harvested 500 images via search phrase "**brown poddle dogs**"" and 500 images via search phrase "**fried chichen wings**" respectively. More specifically, we scraped top-ranked search results and manually removed inappropriate images for this experiment (e.g., wrong subjects, images that are too small or too large, black-and-white images). All images are then converted to the [JPEG format](https://en.wikipedia.org/wiki/JPEG). The raw images can be found in the [./data/images/](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/tree/master/data/images) folder.
+Using [Google image search](https://images.google.com/), we harvested 500 images via search phrase "**brown poodle dogs**"" and 500 images via search phrase "**fried chichen wings**" respectively. More specifically, we scraped top-ranked search results and manually removed inappropriate images for this experiment (e.g., wrong subjects, images that are too small or too large, black-and-white images). All images are then converted to the [JPEG format](https://en.wikipedia.org/wiki/JPEG). The raw images can be found in the [./data/images/](https://github.com/yuting27/Poddle-Vs.-Fried-Chicken/tree/master/data/images) folder.
 
 ## Data Processing
 
